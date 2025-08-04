@@ -7,7 +7,14 @@ export default function LoginPage() {
   const navigate = useNavigate()
   const [loginError, setLoginError] = useState<string | null>(null)
 
-  const formik = useFormik({
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = useFormik({
     initialValues: {
       email: '',
       password: '',
@@ -41,7 +48,7 @@ export default function LoginPage() {
           <div className="mb-4 text-sm text-red-600 text-center">{loginError}</div>
         )}
 
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-700">
               Email
@@ -51,16 +58,16 @@ export default function LoginPage() {
               name="email"
               type="email"
               className={`w-full px-3 py-2 border rounded ${
-                formik.touched.email && formik.errors.email
+                touched.email && errors.email
                   ? 'border-red-500'
                   : 'border-gray-300'
               }`}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
             />
-            {formik.touched.email && formik.errors.email && (
-              <p className="mt-1 text-sm text-red-600">{formik.errors.email}</p>
+            {touched.email && errors.email && (
+              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
             )}
           </div>
 
@@ -73,16 +80,16 @@ export default function LoginPage() {
               name="password"
               type="password"
               className={`w-full px-3 py-2 border rounded ${
-                formik.touched.password && formik.errors.password
+                touched.password && errors.password
                   ? 'border-red-500'
                   : 'border-gray-300'
               }`}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
             />
-            {formik.touched.password && formik.errors.password && (
-              <p className="mt-1 text-sm text-red-600">{formik.errors.password}</p>
+            {touched.password && errors.password && (
+              <p className="mt-1 text-sm text-red-600">{errors.password}</p>
             )}
           </div>
 

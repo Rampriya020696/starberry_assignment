@@ -6,6 +6,10 @@ This is a real estate property listing platform built using **React**, **TypeScr
 
 The login screen accepts a fixed email and password combination (e.g., `admin@starberry.com / password123`).
 
+- The form uses **Formik** for form handling and **Yup** for validation.
+- Validation rules:
+  - Email must be in proper format
+  - Password must not be empty
 - On successful login, email and auth flag are stored in `localStorage`.
 - The app redirects to the property list page.
 - On logout, localStorage is cleared and the user is returned to the login page.
@@ -34,7 +38,7 @@ Displays the app title, the logged-in user’s email, and a logout button.
 ## 4. Property Listing
 
 Displays cards for each property. Each card shows:
-- Thumbnail (or fallback image)
+- Image
 - Title and address
 - Bedrooms, listing type (sale/rent), and area
 - Price and listing date
@@ -54,8 +58,6 @@ Displays:
 Users can filter properties by:
 - Min/Max price
 - Bedrooms
-- Bathrooms
-- City
 - Listing type (sale/rent)
 
 Filter values are passed as query parameters to the backend.
@@ -85,18 +87,4 @@ getProperties({ page, pageSize, filters });
 ```
 
 The API returns `data` and `meta` (pagination metadata).
-
-
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
-```
-
-Visit: `http://localhost:5173`
-
-Default login: `admin@starberry.com / password123`
-
 
